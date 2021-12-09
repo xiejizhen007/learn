@@ -41,6 +41,7 @@ namespace obj {
             ss.str(line);
             ss >> token;
 
+            // TODO: 正确加载 object
             if (token == "o" || token == "g") {
                 if (!vertices.empty() && !indices.empty()) {        // generate a new mesh
                     ss >> token;
@@ -56,8 +57,6 @@ namespace obj {
 
                 vertices.clear();
                 indices.clear();
-                ss >> token;
-                std::cout << "object name > " << token << std::endl;
             } else if (token == "v") {          // vertex position
                 Vector3 v3;
                 ss >> v3.x >> v3.y >> v3.z;
@@ -128,9 +127,10 @@ namespace obj {
             }
         }
 
-        std::cout << "vertices > " << loadedVertices.size() << std::endl;
-        std::cout << "indices > " << loadedIndices.size() << std::endl;
-        std::cout << "meshs > " << loadedMeshs.size() << std::endl;
+        // std::cout << "vertices > " << loadedVertices.size() << std::endl;
+        // std::cout << "indices > " << loadedIndices.size() << std::endl;
+        // std::cout << "meshs > " << loadedMeshs.size() << std::endl;
+        file.close();
         return true;
     }
 
@@ -164,7 +164,7 @@ namespace obj {
                     tmp += in.substr(i, token.size());
                     ret.push_back(tmp);
                     tmp.clear();
-                    break;
+                    break;          // it is over
                 } else {
                     tmp += in[i];
                 }

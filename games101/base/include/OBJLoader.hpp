@@ -1,5 +1,6 @@
 // obj 文件加载器
 // 目前只提取需要用到的数据
+// 借鉴 https://github.com/Bly7/OBJ-Loader
 
 #pragma once
 
@@ -16,12 +17,12 @@ namespace obj {
             x = 0.f;
             y = 0.f;
         }
-        // 
+
         Vector2(float X, float Y) {
             x = X;
             y = Y;
         }
-        // 
+
         bool operator==(const Vector2& v) const {
             return this->x == v.x && this->y == v.y;
         }
@@ -147,10 +148,12 @@ namespace obj {
         // TODO: 加载模型，顺带加载 mtl 文件
         bool loadFile(std::string path);
     private:
+        // TODO: 加载 mtl 文件
         bool loadObjectMtl(std::string path);
     };
 
     namespace algorithm {
+        // get element[index]
         template <class T>
         const T& getElement(const std::vector<T>& element, int index);
 

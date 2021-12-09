@@ -1,5 +1,6 @@
 #include "mesh.hpp"
 #include "shader.hpp"
+#include "OBJLoader.hpp"
 
 Mesh::Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
     : vertices(vertices), indices(indices), textures(textures) {
@@ -46,4 +47,14 @@ Mesh::setupMesh() {
     // 纹理坐标
     glEnableVertexAttribArray(2);
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)(offsetof(Vertex, texCoord)));
+}
+
+bool
+Mesh::loadMesh(const std::string& path) {
+
+}
+
+bool 
+Mesh::loadTexture(const std::string& path) {
+    return false;
 }

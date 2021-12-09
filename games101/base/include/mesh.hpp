@@ -28,13 +28,21 @@ public:
     std::vector<Vertex>         vertices;
     std::vector<unsigned int>   indices;
     std::vector<Texture>        textures;
-    
+
+    // 先载入数据
     Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures);
     void draw(class Shader* shader);
+    
+    // 后载入数据
+    Mesh() {};
+    bool loadMesh(const std::string& path);
+    bool loadTexture(const std::string& path);
+
 private:
     // 顶点缓冲对象，索引缓冲对象
     unsigned int VBO, EBO;
 
     void setupMesh();
 };
+
 #endif  // MESH_H
